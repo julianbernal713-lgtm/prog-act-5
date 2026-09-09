@@ -13,6 +13,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import urllib3
+import from random import choice
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -29,6 +30,12 @@ LLAVE_FECHA = "level_date"
 LLAVE_VALOR = "level"
 CANDIDATOS_LAT = ["lat", "latitude", "latitud"]
 CANDIDATOS_LON = ["lng", "lon", "longitude", "longitud"]
+
+Links = [("Rie","https://youtu.be/BEwzyezot3s?si=u_lJlFh-bIKF907G"),
+         ("Risa", "https://youtu.be/xK4UZ8loy8Y?si=91MgBe4hGU_FgGMM"),
+         ("Sonrisa", "https://youtu.be/s5K2gkq98Mw?si=SycDsxosgnfB1Nef"),]
+
+Img = "https://udoe.es/wp-content/uploads/2023/12/el-agua-destilada-es-lo-mismo-que-el-agua-oxigenada-2.jpg"
 
 st.set_page_config(page_title="Hidrometeorológica", page_icon="🌊", layout="wide")
 
@@ -121,8 +128,13 @@ fecha_hasta = st.sidebar.date_input("Hasta", pd.to_datetime("2026-03-26")).strft
 calidad = st.sidebar.selectbox("Calidad", [1, 0], index=0, help="1 = solo datos validados")
 consultar = st.sidebar.button("🔍 Consultar", type="primary")
 
+etiqueta, url = choice(Links)
+st.sidebar.link_button(etiqueta, url, help= "haz click aqui")
+
 st.title("🌊 Hidrometeorológica")
 st.caption(f"Estudiante: **{nombre_estudiante}** · Estación: **{codigo_estacion}**")
+
+st.image(Img, use_container_width= true)
 
 # ------------------------------------------------------------------
 # Consulta y procesamiento
