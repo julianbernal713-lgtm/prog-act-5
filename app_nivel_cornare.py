@@ -13,7 +13,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import urllib3
-import from random import choice
+from random import choice
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
