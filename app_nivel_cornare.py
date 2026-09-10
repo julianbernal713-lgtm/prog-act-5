@@ -134,7 +134,7 @@ st.sidebar.link_button(etiqueta, url, help= "haz click aqui")
 st.title("🌊 Hidrometeorológica")
 st.caption(f"Estudiante: **{nombre_estudiante}** · Estación: **{codigo_estacion}**")
 
-st.image(Img, use_container_width= true)
+st.image(Img, use_container_width=True)
 
 # ------------------------------------------------------------------
 # Consulta y procesamiento
