@@ -131,6 +131,7 @@ consultar = st.sidebar.button("🔍 Consultar", type="primary")
 etiqueta, url = choice(Links)
 st.sidebar.link_button(etiqueta, url, help="haz click aqui")
 
+# Título con imagen al lado
 col_titulo, col_img = st.columns([3, 1])
 with col_titulo:
     st.title("🌊 Hidrometeorológica")
@@ -172,38 +173,21 @@ if consultar:
             col4.metric("Outliers detectados", n_outliers)
 
             # --- Gráfico de la serie ---
-            
             st.subheader("Serie de nivel")
-
             st.line_chart(df.set_index("fecha")["nivel"])
 
-             with col_img:
-                st.image(Img, use_container_width=True)
-
             # --- Mapa de la estación ---
-
- 
             st.subheader("Ubicación de la estación")
-                with col_img:
-                st.image(Img, use_container_width=True)
-
             if not coords_reales:
                 st.caption("La API no trajo latitud/longitud de la estación — se muestra el punto de partida (Pascual Bravo). Ajusta `CANDIDATOS_LAT` / `CANDIDATOS_LON` si conoces el nombre real de la estación.")
             st.map(pd.DataFrame({"lat": [lat], "lon": [lon]}), zoom=10)
 
             # --- Detalle de calidad ---
-        
-
-
             with st.expander("Detalle del índice de calidad"):
                 st.write(f"- Huecos de reporte detectados: **{huecos}**")
                 st.write(f"- Outliers (IQR + nivel negativo): **{n_outliers}** de {len(df)} lecturas")
                 st.write("El índice combina completitud de la serie (70%) y proporción de datos sin outliers (30%).")
 
-                    with col_img:
-                st.image(Img, use_container_width=True)
-
-        
             # --- Tabla y descarga ---
             with st.expander("Ver datos crudos"):
                 st.dataframe(df, use_container_width=True)
