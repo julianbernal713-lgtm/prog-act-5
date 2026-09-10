@@ -172,16 +172,33 @@ if consultar:
             col4.metric("Outliers detectados", n_outliers)
 
             # --- Gráfico de la serie ---
+            
             st.subheader("Serie de nivel")
+
+            with col_titulo:
+                st.title("🌊 Hidrometeorológica")
+            with col_img:
+                st.image(Img, use_container_width=True)
+
             st.line_chart(df.set_index("fecha")["nivel"])
 
             # --- Mapa de la estación ---
+            with col_titulo:
+                st.title("🌊 Hidrometeorológica")
+            with col_img:
+                st.image(Img, use_container_width=True)
+
             st.subheader("Ubicación de la estación")
             if not coords_reales:
                 st.caption("La API no trajo latitud/longitud de la estación — se muestra el punto de partida (Pascual Bravo). Ajusta `CANDIDATOS_LAT` / `CANDIDATOS_LON` si conoces el nombre real de la estación.")
             st.map(pd.DataFrame({"lat": [lat], "lon": [lon]}), zoom=10)
 
             # --- Detalle de calidad ---
+            with col_titulo:
+                st.title("🌊 Hidrometeorológica")
+            with col_img:
+                st.image(Img, use_container_width=True)
+
             with st.expander("Detalle del índice de calidad"):
                 st.write(f"- Huecos de reporte detectados: **{huecos}**")
                 st.write(f"- Outliers (IQR + nivel negativo): **{n_outliers}** de {len(df)} lecturas")
