@@ -172,9 +172,21 @@ if consultar:
             col3.metric("Índice de calidad", f"{indice_calidad} / 100")
             col4.metric("Outliers detectados", n_outliers)
 
+            
+            col_sep1, col_sep2 = st.columns([4,1])
+            with col_sep2:
+                st.image(img, use_container_width=True)
+                
+
             # --- Gráfico de la serie ---
             st.subheader("Serie de nivel")
             st.line_chart(df.set_index("fecha")["nivel"])
+
+            
+            col_sep1, col_sep2 = st.columns([4,1])
+            with col_sep2:
+                st.image(img, use_container_width=True)
+                
 
             # --- Mapa de la estación ---
             st.subheader("Ubicación de la estación")
@@ -182,11 +194,24 @@ if consultar:
                 st.caption("La API no trajo latitud/longitud de la estación — se muestra el punto de partida (Pascual Bravo). Ajusta `CANDIDATOS_LAT` / `CANDIDATOS_LON` si conoces el nombre real de la estación.")
             st.map(pd.DataFrame({"lat": [lat], "lon": [lon]}), zoom=10)
 
+            
+            col_sep1, col_sep2 = st.columns([4,1])
+            with col_sep2:
+                st.image(img, use_container_width=True)
+                
+
             # --- Detalle de calidad ---
             with st.expander("Detalle del índice de calidad"):
                 st.write(f"- Huecos de reporte detectados: **{huecos}**")
                 st.write(f"- Outliers (IQR + nivel negativo): **{n_outliers}** de {len(df)} lecturas")
                 st.write("El índice combina completitud de la serie (70%) y proporción de datos sin outliers (30%).")
+
+            
+            col_sep1, col_sep2 = st.columns([4,1])
+            with col_sep2:
+                st.image(img, use_container_width=True)
+                
+
 
             # --- Tabla y descarga ---
             with st.expander("Ver datos crudos"):
