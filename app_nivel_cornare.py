@@ -129,16 +129,15 @@ calidad = st.sidebar.selectbox("Calidad", [1, 0], index=0, help="1 = solo datos 
 consultar = st.sidebar.button("🔍 Consultar", type="primary")
 
 etiqueta, url = choice(Links)
-st.sidebar.link_button(etiqueta, url, help= "haz click aqui")
+st.sidebar.link_button(etiqueta, url, help="haz click aqui")
 
-col_titulo, col_img = st.columns([3,1])
+col_titulo, col_img = st.columns([3, 1])
 with col_titulo:
-st.title("🌊 Hidrometeorológica")
+    st.title("🌊 Hidrometeorológica")
 with col_img:
-st.image(Img, use_container_width=True)
+    st.image(Img, use_container_width=True)
 
 st.caption(f"Estudiante: **{nombre_estudiante}** · Estación: **{codigo_estacion}**")
-
 
 
 # ------------------------------------------------------------------
@@ -179,7 +178,7 @@ if consultar:
             # --- Mapa de la estación ---
             st.subheader("Ubicación de la estación")
             if not coords_reales:
-                st.caption("La API no trajo latitud/longitud de la estación — se muestra el punto de partida (Pascual Bravo). Ajusta `CANDIDATOS_LAT` / `CANDIDATOS_LON` si conoces el nombre real de esas llaves.")
+                st.caption("La API no trajo latitud/longitud de la estación — se muestra el punto de partida (Pascual Bravo). Ajusta `CANDIDATOS_LAT` / `CANDIDATOS_LON` si conoces el nombre real de la estación.")
             st.map(pd.DataFrame({"lat": [lat], "lon": [lon]}), zoom=10)
 
             # --- Detalle de calidad ---
