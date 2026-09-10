@@ -128,8 +128,8 @@ fecha_hasta = st.sidebar.date_input("Hasta", pd.to_datetime("2026-03-26")).strft
 calidad = st.sidebar.selectbox("Calidad", [1, 0], index=0, help="1 = solo datos validados")
 consultar = st.sidebar.button("🔍 Consultar", type="primary")
 
-etiqueta, url = choice(Links)
-st.sidebar.link_button(etiqueta, url, help="haz click aqui")
+url = choice(Links)
+st.sidebar.link_button(url, help="haz click aqui")
 
 # Título con imagen al lado
 col_titulo, col_img = st.columns([3, 1])
