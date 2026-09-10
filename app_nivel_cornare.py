@@ -131,10 +131,15 @@ consultar = st.sidebar.button("🔍 Consultar", type="primary")
 etiqueta, url = choice(Links)
 st.sidebar.link_button(etiqueta, url, help= "haz click aqui")
 
+col_titulo, col_img = st.columns([3,1])
+with col_titulo:
 st.title("🌊 Hidrometeorológica")
+with col_img:
+st.image(Img, use_container_width=True)
+
 st.caption(f"Estudiante: **{nombre_estudiante}** · Estación: **{codigo_estacion}**")
 
-st.image(Img, use_container_width=True)
+
 
 # ------------------------------------------------------------------
 # Consulta y procesamiento
